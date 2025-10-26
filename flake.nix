@@ -18,33 +18,36 @@
       # on a binary cache.
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
   };
 
-  outputs = { self, nixpkgs, home-manager, nvf, ... }@inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in {
-      nixosConfigurations = {
-        desktop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
-          modules = [
-            inputs.home-manager.nixosModules.default
-            nvf.nixosModules.default
-            ./hosts/desktop/configuration.nix
-            ./nixosModules
-          ];
-        };
-
-        # thinkpad = nixpkgs.lib.nixosSystem {
-        #	specialArgs = { inherit inputs; };
-        #	modules = [
-        #		./hosts/thinkpad/configuration.nix
-        #		./nixosModules
-        #	];
-        #
-        #};
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    nvf,
+    ...
+  } @ inputs: let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+  in {
+    nixosConfigurations = {
+      desktop = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [
+          inputs.home-manager.nixosModules.default
+          nvf.nixosModules.default
+          ./hosts/desktop/configuration.nix
+        ];
       };
+
+      # thinkpad = nixpkgs.lib.nixosSystem {
+      #	specialArgs = { inherit inputs; };
+      #	modules = [
+      #		./hosts/thinkpad/configuration.nix
+      #		./nixosModules
+      #	];
+      #
+      #};
     };
+  };
 }

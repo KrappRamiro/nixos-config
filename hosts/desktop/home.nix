@@ -1,6 +1,9 @@
-{ config, pkgs, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "krapp";
@@ -76,7 +79,9 @@
   programs.home-manager.enable = true;
 
   # Gets the programs from our home manager modules directory
-  imports = [ ../../hmModules ];
+  imports = [
+    ../../hmModules
+  ];
 
   git.enable = true;
   k8s.enable = true;
