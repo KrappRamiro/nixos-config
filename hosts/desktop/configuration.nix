@@ -12,12 +12,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../../nixosModules
-    ./boot.nix
-    ./networking.nix
-    ./i18n.nix
-    ./users.nix
-    ./wayland.nix
+    ../../modules/core
     ./nvf.nix
   ];
 
@@ -36,8 +31,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [wget git];
-  #Enable the OpenSSH daemon.
-  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedUDPPorts = [ ... ];

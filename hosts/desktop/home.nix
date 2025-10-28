@@ -80,7 +80,7 @@
 
   # Gets the programs from our home manager modules directory
   imports = [
-    ../../hmModules
+    ../../modules/home
   ];
 
   git.enable = true;
