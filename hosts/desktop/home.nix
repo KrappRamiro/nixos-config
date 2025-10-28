@@ -94,4 +94,6 @@
   hyprland.enable = true;
   firefox.enable = true;
   rofi.enable = true;
+  tealdeer.enable = true;
+  #hyprshot.enable = true;
 }
