@@ -22,4 +22,12 @@
       wayland.enable = true;
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    wl-clipboard
+    # This three packages are needed for screenshotin
+    grim
+    swappy
+    slurp
+  ];
 }

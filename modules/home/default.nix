@@ -11,7 +11,7 @@
     ./gui/alacritty.nix
     ./gui/firefox.nix
     ./gui/hyprland.nix
-    ./gui/hyprshot.nix
+    ./gui/screenshotin.nix
     ./gui/rofi-launcher.nix
   ];
 }
