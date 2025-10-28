@@ -13,6 +13,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../modules/core
+    ../../modules/drivers
     ./nvf.nix
   ];
 
@@ -32,11 +33,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [wget git];
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
@@ -53,11 +49,14 @@
     users.krapp = import ./home.nix;
   };
   # --- ZSH
-
   # When adding a new shell, always enable the shell system-wide, even if it's already enabled in your Home Manager configuration, otherwise it won't source the necessary files.
   # See https://nixos.wiki/wiki/Command_Shell
   programs.zsh.enable = true;
 
   # See https://drakerossman.com/blog/wayland-on-nixos-confusion-conquest-triumph
   security.polkit.enable = true;
+
+  # Drivers settings
+  drivers.amdgpu.enable = true;
+  drivers.local-hardware-clock.enable = true;
 }

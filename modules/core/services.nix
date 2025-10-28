@@ -17,16 +17,20 @@
     tumbler.enable = true; # Image/video preview
     gnome.gnome-keyring.enable = true;
 
+    # storage S.M.A.R.T.
     smartd = {
       enable = true;
       autodetect = true;
     };
+
+    # audio
     pipewire = {
       enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
       jack.enable = true;
+      # Copypasted from ZaneyOS
       extraConfig.pipewire."92-low-latency" = {
         "context.properties" = {
           "default.clock.rate" = 48000;
@@ -35,6 +39,8 @@
           "default.clock.max-quantum" = 256;
         };
       };
+
+      # Copypasted from ZaneyOS
       extraConfig.pipewire-pulse."92-low-latency" = {
         context.modules = [
           {
