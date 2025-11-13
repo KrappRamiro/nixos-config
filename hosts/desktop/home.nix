@@ -81,8 +81,24 @@
   # Gets the programs from our home manager modules directory
   imports = [
     ../../modules/home
+    inputs.lazyvim.homeManagerModules.default
   ];
+  programs.lazyvim = {
+    enable = true;
+      extraPackages = with pkgs; [
+    # LSP servers
+    nixd
+    pyright
 
+    # Formatters
+    black
+    alejandra
+
+    # Tools
+    ripgrep
+    fd
+  ];
+};
   git.enable = true;
   k8s.enable = true;
   monitoring.enable = true;

@@ -14,7 +14,7 @@
     ./hardware-configuration.nix
     ../../modules/core
     ../../modules/drivers
-    ./nvf.nix
+    #./nvf.nix
   ];
 
   # Allow unfree packages
@@ -46,7 +46,10 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.krapp = import ./home.nix;
+    users.krapp = import ./home.nix {
+	# suggested by ChatGPT to be avoid an infinite recursion when importing lazyvim in home.nix
+	inherit pkgs config inputs;
+    };
   };
   # --- ZSH
   # When adding a new shell, always enable the shell system-wide, even if it's already enabled in your Home Manager configuration, otherwise it won't source the necessary files.
