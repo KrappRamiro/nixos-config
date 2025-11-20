@@ -22,7 +22,9 @@
           enable = true;
 
           formatOnSave = true;
+          # lspkind le agrega iconitos a la parte de UI de completion
           lspkind.enable = false;
+
           lightbulb.enable = true;
           lspsaga.enable = false;
           trouble.enable = true;

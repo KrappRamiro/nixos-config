@@ -29,5 +29,10 @@
     grim
     swappy
     slurp
+
+    # This for monitor brightness control
+    brightnessctl
+    # This for controlling music with keyboard
+    playerctl
   ];
 }
