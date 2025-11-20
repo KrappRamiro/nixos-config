@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  hardware.pulseaudio.enable = false; # Use pipewire, the modern sound subsystem
+  services.pulseaudio.enable = false; # Use pipewire, the modern sound subsystem
   security.rtkit.enable = true; # Enable RealtimeKit for audio purposes
 
   # audio

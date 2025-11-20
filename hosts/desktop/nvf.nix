@@ -20,20 +20,25 @@
           # This must be enabled for the language modules to hook into
           # the LSP API.
           enable = true;
-
           formatOnSave = true;
           # lspkind le agrega iconitos a la parte de UI de completion
           lspkind.enable = false;
-
+          # cuando haya una codeAction disponible, una lamparita aparece en la linea
           lightbulb.enable = true;
+          # Improves the Neovim built-in LSP experience.
           lspsaga.enable = false;
+          # Shows diagnostics, referencces, telescope results, quickfix and location lists in a pretty list
           trouble.enable = true;
+          # Show function signature when you type
           lspSignature.enable = false; # conflicts with blink in maximal
+          # Otter.nvim provides lsp features, including code completion, for code embedded in other documents
           otter-nvim.enable = true;
+          # Te permite ver la docu de una funcion en un side panel
           nvim-docs-view.enable = true;
         };
 
         debugger = {
+          #  Debug Adapter Protocol client implementation for Neovim.
           nvim-dap = {
             enable = true;
             ui.enable = true;
@@ -47,25 +52,16 @@
           enableTreesitter = true;
           enableExtraDiagnostics = true;
 
-          # Languages that will be supported in default and maximal configurations.
           nix.enable = true;
           markdown.enable = true;
           markdown.format.type = "prettierd";
-
-          # Languages that are enabled in the maximal configuration.
-          bash.enable = true;
-          clang.enable = true;
           css.enable = true;
           css.format.type = "prettierd";
           html.enable = true;
           sql.enable = true;
-          java.enable = true;
-          kotlin.enable = true;
           ts.enable = true;
           ts.format.type = "prettierd";
-          go.enable = true;
           lua.enable = true;
-          zig.enable = true;
           python.enable = true;
           typst.enable = true;
           rust = {
@@ -73,32 +69,8 @@
             crates.enable = true;
           };
 
-          # Language modules that are not as common.
-          assembly.enable = false;
-          astro.enable = false;
-          nu.enable = false;
-          csharp.enable = false;
-          julia.enable = false;
-          vala.enable = false;
-          scala.enable = false;
-          r.enable = false;
-          gleam.enable = false;
-          dart.enable = false;
-          ocaml.enable = false;
-          elixir.enable = false;
-          haskell.enable = false;
-          ruby.enable = false;
-          fsharp.enable = false;
-
-          tailwind.enable = false;
-          svelte.enable = false;
-
-          # Nim LSP is broken on Darwin and therefore
-          # should be disabled by default. Users may still enable
-          # `vim.languages.vim` to enable it, this does not restrict
-          # that.
-          # See: <https://github.com/PMunch/nimlsp/issues/178#issue-2128106096>
-          nim.enable = false;
+          astro.enable = true;
+          astro.format.type = "prettierd";
         };
 
         visuals = {
@@ -149,7 +121,11 @@
         };
 
         tabline = {
-          nvimBufferline.enable = true;
+          nvimBufferline = {
+            enable = true;
+            # Makes the buffers have a 1. 2. 3. etc...
+            setupOpts.options.numbers = "ordinal";
+          };
         };
 
         treesitter.context.enable = true;

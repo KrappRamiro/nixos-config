@@ -1,4 +1,6 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
+  #  search fonts with
+  # fc-list : family style | less
   fonts = {
     packages = with pkgs; [
       dejavu_fonts
@@ -9,6 +11,7 @@
       material-icons
       nerd-fonts.im-writing
       nerd-fonts.blex-mono
+      nerd-fonts.fira-code
       noto-fonts
       noto-fonts-emoji
       noto-fonts-cjk-sans
@@ -22,4 +25,3 @@
     ];
   };
 }
-
