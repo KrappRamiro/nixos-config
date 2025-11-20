@@ -5,7 +5,7 @@
   ...
 }: {
   options = {
-    screenshotin.enable = lib.mkEnableOption "Enables screenshootin, a custom screenshot tool";
+    screenshotin.enable = lib.mkEnableOption "Enables screenshotin, a custom screenshot tool";
   };
 
   config = lib.mkIf config.screenshotin.enable {
@@ -19,7 +19,7 @@
 
     # Now this depends on this shell script
     home.packages = [
-      (pkgs.writeShellScriptBin "screenshootin" ''
+      (pkgs.writeShellScriptBin "screenshotin" ''
         grim -g "$(slurp)" - | swappy -f -
       '')
     ];
