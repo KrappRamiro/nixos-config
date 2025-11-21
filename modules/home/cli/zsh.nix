@@ -1,6 +1,10 @@
-{ pkgs, lib, config, ... }: {
-
-  options = { zsh.enable = lib.mkEnableOption "Enables the ZSH shell"; };
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
+  options = {zsh.enable = lib.mkEnableOption "Enables the ZSH shell";};
 
   config = lib.mkIf config.zsh.enable {
     programs.zsh = {
@@ -18,7 +22,5 @@
         line_break.disabled = true;
       };
     };
-
   };
-
 }

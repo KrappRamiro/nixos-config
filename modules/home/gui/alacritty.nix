@@ -15,10 +15,11 @@
       settings = {
         font = {
           size = 14;
-          normal.family = "FiraCode Nerd Font";
-          bold.family = "FiraCode Nerd Font";
-          italic.family = "FiraCode Nerd Font";
-          bold_italic.family = "FiraCode Nerd Font";
+          # Please see modules/core/fonts.nix to understand where terminal-font is coming from
+          normal.family = "terminal-font";
+          bold.family = "terminal-font";
+          italic.family = "terminal-font";
+          bold_italic.family = "terminal-font";
         };
         scrolling.multiplier = 5;
         selection.save_to_clipboard = false;
