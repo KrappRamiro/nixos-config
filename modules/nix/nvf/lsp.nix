@@ -1,0 +1,28 @@
+{
+  lib,
+  config,
+  ...
+}: {
+  config = lib.mkIf config.nvf.enable {
+    programs.nvf.settings.vim.lsp = {
+      # This must be enabled for the language modules to hook into
+      # the LSP API.
+      enable = true;
+      formatOnSave = true;
+      # lspkind le agrega iconitos a la parte de UI de completion
+      lspkind.enable = false;
+      # cuando haya una codeAction disponible, una lamparita aparece en la linea
+      lightbulb.enable = true;
+      # Improves the Neovim built-in LSP experience.
+      lspsaga.enable = false;
+      # Shows diagnostics, referencces, telescope results, quickfix and location lists in a pretty list
+      trouble.enable = true;
+      # Show function signature when you type
+      lspSignature.enable = false; # conflicts with blink in maximal
+      # Otter.nvim provides lsp features, including code completion, for code embedded in other documents
+      otter-nvim.enable = true;
+      # Te permite ver la docu de una funcion en un side panel
+      nvim-docs-view.enable = true;
+    };
+  };
+}

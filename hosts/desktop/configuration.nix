@@ -14,7 +14,7 @@
     ./hardware-configuration.nix
     ../../modules/core
     ../../modules/drivers
-    ./nvf.nix
+    ../../modules/nix
   ];
 
   # Allow unfree packages
@@ -64,4 +64,7 @@
   # Drivers settings
   drivers.amdgpu.enable = true;
   drivers.local-hardware-clock.enable = true;
+
+  # Import nvf
+  nvf.enable = true;
 }

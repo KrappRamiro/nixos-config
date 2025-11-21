@@ -1,9 +1,11 @@
-{ lib, pkgs, config, ... }:
-
 {
-
+  lib,
+  config,
+  ...
+}: {
   options = {
-    reduceDiskUsage.enable = lib.mkEnableOption
+    reduceDiskUsage.enable =
+      lib.mkEnableOption
       "Enables the Nix Garbage Collection and Store optimizations";
   };
 
@@ -16,12 +18,10 @@
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 1w";
-
     };
 
     # optimize the store
     nix.optimise.automatic = true;
     nix.settings.auto-optimise-store = true;
   };
-
 }
