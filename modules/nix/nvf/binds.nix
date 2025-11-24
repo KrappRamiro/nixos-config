@@ -21,48 +21,56 @@
         action = "<Cmd>Cheatsheet<CR>";
         desc = "Cheatsheet";
       }
+      # Window navigation
       {
         mode = "n";
         key = "<C-h>";
         action = "<C-w>h";
+        desc = "Move to left window";
       }
       {
         mode = "n";
         key = "<C-j>";
         action = "<C-w>j";
+        desc = "Move to bottom window";
       }
       {
         mode = "n";
         key = "<C-k>";
         action = "<C-w>k";
+        desc = "Move to top window";
       }
       {
         mode = "n";
         key = "<C-l>";
         action = "<C-w>l";
+        desc = "Move to right window";
       }
-
-      # --- Default Unmapping
+      # --- Unmapping of default binds
       # Unmap the default <C-w>h/j/k/l>
       {
         mode = "n";
         key = "<C-w>h";
-        action = "";
+        action = "<Nop>";
+        desc = "Disable default C-w h";
       }
       {
         mode = "n";
         key = "<C-w>j";
-        action = "";
+        action = "<Nop>";
+        desc = "Disable default C-w j";
       }
       {
         mode = "n";
         key = "<C-w>k";
-        action = "";
+        action = "<Nop>";
+        desc = "Disable default C-w k";
       }
       {
         mode = "n";
         key = "<C-w>l";
-        action = "";
+        action = "<Nop>";
+        desc = "Disable default C-w l";
       }
     ];
 

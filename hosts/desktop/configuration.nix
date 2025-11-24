@@ -31,7 +31,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [wget git];
+  environment.systemPackages = with pkgs; [wget git gcc];
 
   # Force apps to use Wayland
   environment.sessionVariables = {
