@@ -1,7 +1,12 @@
-{ pkgs, lib, config, ... }: {
-
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   options = {
-    useful.enable = lib.mkEnableOption
+    useful.enable =
+      lib.mkEnableOption
       "Enables useful programs. Yes, i can't be more lazy, they are cool AF programs that i think i want in my system";
   };
 
@@ -40,7 +45,12 @@
 
       # productivity
       glow # markdown previewer in terminal
+
+      # provides the npins utility
+      npins
+
+      # Rust toolchain
+      rustup
     ];
   };
-
 }

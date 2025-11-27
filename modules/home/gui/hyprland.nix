@@ -88,6 +88,9 @@
             ", XF86AudioPrev,  exec, playerctl previous"
           ];
         };
+        input = {
+          accel_profile = "flat";
+        };
         decoration = {
           rounding = 20;
           blur = {

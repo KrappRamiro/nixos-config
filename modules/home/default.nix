@@ -8,6 +8,7 @@
     ./cli/tealdeer.nix
     ./cli/useful.nix
     ./cli/zsh.nix
+    ./cli/rust.nix
     ./gui/alacritty.nix
     ./gui/firefox.nix
     ./gui/hyprland.nix

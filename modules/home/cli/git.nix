@@ -22,6 +22,7 @@
         log.date = "iso"; # ISO 8601 date format
         # Conflict resolution style for readable diffs
         merge.conflictStyle = "diff3";
+        push.autoSetupRemote = "true";
       };
       # Optional: FOSS-friendly Git aliases
       aliases = {

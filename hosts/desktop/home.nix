@@ -96,4 +96,6 @@
   rofi.enable = true;
   tealdeer.enable = true;
   screenshotin.enable = true;
+
+  rust.enable = true;
 }
