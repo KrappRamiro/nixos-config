@@ -18,6 +18,7 @@
       # on a binary cache.
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     # See https://github.com/NotAShelf/nvf/discussions/1250
     rust-overlay.url = "github:oxalica/rust-overlay";
   };
