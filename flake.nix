@@ -18,6 +18,8 @@
       # on a binary cache.
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # See https://github.com/NotAShelf/nvf/discussions/1250
+    rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
   outputs = {
@@ -37,6 +39,11 @@
           inputs.home-manager.nixosModules.default
           nvf.nixosModules.default
           ./hosts/desktop/configuration.nix
+
+          # This applies the overlay to the system instance of pkgs
+          ({pkgs, ...}: {
+            nixpkgs.overlays = [inputs.rust-overlay.overlays.default];
+          })
         ];
       };
 

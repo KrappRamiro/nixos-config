@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: {
   config = lib.mkIf config.nvf.enable {
@@ -25,6 +26,10 @@
         rust = {
           enable = true;
           crates.enable = true;
+          lsp.enable = true;
+          # This fixes the issue:
+          # "The version of the proc-macro server in your Rust toolchain is newer than the version supported by your rust-analyzer"
+          lsp.package = pkgs.rust-bin.stable.latest.rust-analyzer;
         };
 
         astro.enable = true;
