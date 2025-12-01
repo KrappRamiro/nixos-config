@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: {
   config = lib.mkIf config.nvf.enable {
@@ -23,6 +24,35 @@
       otter-nvim.enable = true;
       # Te permite ver la docu de una funcion en un side panel
       nvim-docs-view.enable = true;
+
+      #
+      # -------------------------------------------------
+      #   DOCKER COMPOSE SUPPORT (yaml-language-server)
+      # -------------------------------------------------
+      # No instalamos compose-language-service.
+      # Usamos yamlls + el esquema oficial del compose-spec.
+      #
+      servers = {
+        yamlls = {
+          enable = true;
+          settings = {
+            yaml = {
+              validate = true;
+              format.enable = true;
+              # Agregamos el esquema OFICIAL del compose-spec:
+              # https://github.com/compose-spec/compose-spec/blob/master/schema/compose-spec.json
+              schemas = {
+                "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json" = [
+                  "docker-compose.yml"
+                  "docker-compose.yaml"
+                  "compose.yml"
+                  "compose.yaml"
+                ];
+              };
+            };
+          };
+        };
+      };
     };
   };
 }

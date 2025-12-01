@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: {
   imports = [
@@ -30,6 +31,7 @@
       enable = true;
       settings = {
         vim = {
+          extraPackages = with pkgs; [yaml-language-server];
           viAlias = true;
           vimAlias = true;
 

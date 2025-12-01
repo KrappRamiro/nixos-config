@@ -23,6 +23,7 @@
         lua.enable = true;
         python.enable = true;
         typst.enable = true;
+        yaml.enable = true;
         rust = {
           enable = true;
           crates.enable = true;
