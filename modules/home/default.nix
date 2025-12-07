@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ./cli/docker.nix
     ./cli/git.nix
     ./cli/k8s.nix
     ./cli/monitoring.nix
@@ -14,5 +15,6 @@
     ./gui/hyprland.nix
     ./gui/screenshotin.nix
     ./gui/rofi-launcher.nix
+    ./gui/sioyek.nix
   ];
 }

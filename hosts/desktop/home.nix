@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  inputs,
-  ...
-}: {
+{...}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "krapp";
@@ -96,6 +91,7 @@
   rofi.enable = true;
   tealdeer.enable = true;
   screenshotin.enable = true;
-
   rust.enable = true;
+  docker.enable = true;
+  sioyek.enable = true;
 }
