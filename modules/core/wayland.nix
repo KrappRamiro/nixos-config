@@ -18,7 +18,7 @@
     settings = {
       default_session = {
         # Launch tuigreet, a TUI login screen
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --window-padding 10 --cmd 'uwsm start hyprland'";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --window-padding 10 --cmd 'uwsm start hyprland-uwsm.desktop'";
         user = "krapp";
       };
     };

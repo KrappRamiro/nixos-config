@@ -14,16 +14,6 @@
       # see https://wiki.hypr.land/Useful-Utilities/Systemd-start/
       systemd.enable = false;
       xwayland = {enable = true;};
-      # Force HM to use the system hyprland binary, not its own.
-      # This tells Home Manager:
-      # - Do not install your own Hyprland, do not add it to the user PATH.
-      # - Use the system-wide compositor declared in NixOS.
-      # This removes:
-      #   /etc/profiles/per-user/krapp/bin/hyprland
-      # and leaves only:
-      #   /run/current-system/sw/bin/hyprland
-      # which is what UWSM expects and resolves correctly.
-      package = null;
       settings = {
         general = {
           "$mod" = "SUPER";
