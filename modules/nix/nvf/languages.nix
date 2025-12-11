@@ -24,6 +24,7 @@
         python.enable = true;
         typst.enable = true;
         yaml.enable = true;
+        bash.enable = true;
         rust = {
           enable = true;
           crates.enable = true;
@@ -104,6 +105,38 @@
             end
           '';
           desc = "Set NixOS indent to 2 spaces";
+          group = "indentation";
+        }
+        {
+          enable = true;
+          event = ["FileType"];
+          pattern = [
+            "yaml"
+          ];
+          callback = lib.generators.mkLuaInline ''
+            function()
+              vim.opt_local.shiftwidth = 2
+              vim.opt_local.tabstop = 2
+              vim.opt_local.expandtab = true
+            end
+          '';
+          desc = "Set YAML indent to 2 spaces";
+          group = "indentation";
+        }
+        {
+          enable = true;
+          event = ["FileType"];
+          pattern = [
+            "sh"
+          ];
+          callback = lib.generators.mkLuaInline ''
+            function()
+              vim.opt_local.shiftwidth = 2
+              vim.opt_local.tabstop = 2
+              vim.opt_local.expandtab = true
+            end
+          '';
+          desc = "Set Shell script indent to 2 spaces";
           group = "indentation";
         }
       ];

@@ -18,7 +18,7 @@
     home.packages = with pkgs; [
       just
       tree
-
+      devenv
       neofetch
 
       # archives

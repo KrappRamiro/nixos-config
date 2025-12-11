@@ -13,6 +13,7 @@
     ./languages.nix
     ./lsp.nix
     ./notes.nix
+    ./sqlconfig.nix
     ./statusline.nix
     ./tabline.nix
     ./terminal.nix

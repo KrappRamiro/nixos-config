@@ -25,6 +25,7 @@
     experimental-features = ["nix-command" "flakes"];
     # Hyprland Cachix config
     substituters = ["https://hyprland.cachix.org"];
+    trusted-users = ["root" "krapp"];
     trusted-substituters = ["https://hyprland.cachix.org"];
     trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   };
@@ -67,4 +68,5 @@
 
   # Import nvf
   nvf.enable = true;
+  rust.enable = true;
 }
