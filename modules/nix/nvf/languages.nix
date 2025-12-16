@@ -17,7 +17,8 @@
         css.enable = true;
         css.format.type = "prettierd";
         html.enable = true;
-        sql.enable = true;
+        # FIXME: Enable SQL once i fix it
+        sql.enable = false;
         ts.enable = true;
         ts.format.type = "prettierd";
         lua.enable = true;

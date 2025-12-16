@@ -63,7 +63,7 @@
   drivers.amdgpu.enable = true;
   drivers.local-hardware-clock.enable = true;
 
-  # Import nvf
   nvf.enable = true;
   rust.enable = true;
+  pgadmin.enable = true;
 }
