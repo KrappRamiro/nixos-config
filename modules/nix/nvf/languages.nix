@@ -13,14 +13,11 @@
 
         nix.enable = true;
         markdown.enable = true;
-        markdown.format.type = "prettierd";
         css.enable = true;
-        css.format.type = "prettierd";
         html.enable = true;
         # FIXME: Enable SQL once i fix it
         sql.enable = false;
         ts.enable = true;
-        ts.format.type = "prettierd";
         lua.enable = true;
         python.enable = true;
         typst.enable = true;
@@ -28,15 +25,13 @@
         bash.enable = true;
         rust = {
           enable = true;
-          crates.enable = true;
-          lsp.enable = true;
           # This fixes the issue:
           # "The version of the proc-macro server in your Rust toolchain is newer than the version supported by your rust-analyzer"
           lsp.package = pkgs.rust-bin.stable.latest.rust-analyzer;
+          extensions.crates-nvim.enable = true;
         };
 
         astro.enable = true;
-        astro.format.type = "prettierd";
       };
 
       augroups = [
