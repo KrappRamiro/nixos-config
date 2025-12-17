@@ -15,6 +15,9 @@
       systemd.enable = false;
       xwayland = {enable = true;};
       settings = {
+        debug = {
+          disable_logs = false;
+        };
         general = {
           "$mod" = "SUPER";
           bindm = [
@@ -30,6 +33,11 @@
           ];
 
           bind = [
+            # Switch keyboard layout like in MacOS
+            "$mod CONTROLALT, SPACE, exec, hyprctl switchxkblayout all next"
+
+            # Screenshot
+            "$mod, S, exec, screenshotin"
             # Launching programs
             "$mod, Return, exec, alacritty"
             "$mod, SPACE, exec, rofi -show drun"
@@ -90,7 +98,9 @@
           ];
         };
         input = {
+          # remember to make this match with services.xserver.xkb.layout
           accel_profile = "flat";
+          kb_layout = "us,latam";
         };
         decoration = {
           # animation = NAME, ONOFF, SPEED, CURVE [,STYLE]

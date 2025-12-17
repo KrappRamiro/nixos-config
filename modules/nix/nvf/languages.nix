@@ -13,6 +13,7 @@
 
         nix.enable = true;
         markdown.enable = true;
+        markdown.extensions.markview-nvim.enable = true;
         css.enable = true;
         html.enable = true;
         # FIXME: Enable SQL once i fix it

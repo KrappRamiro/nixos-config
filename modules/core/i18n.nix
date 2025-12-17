@@ -22,9 +22,12 @@
       LC_TIME = "es_AR.UTF-8";
     };
   };
-  # Configure keymap in X11
+  # Configure keymap in X11 and Wayland
+  # To understand what options are valid here, see the output of
+  #    cat $(nix-build --no-out-link '<nixpkgs>' -A xkeyboard_config)/etc/X11/xkb/rules/base.lst
   services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+    # remember to make this match with wayland.windowManager.hyprland.settings.input.kb_layout
+    layout = "us,latam";
+    # Switching keyboard layout is managed by Hyprland
   };
 }

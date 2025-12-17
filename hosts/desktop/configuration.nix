@@ -66,4 +66,5 @@
   nvf.enable = true;
   rust.enable = true;
   pgadmin.enable = true;
+  typst.enable = true;
 }
