@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "krapp";
@@ -77,6 +77,44 @@
   imports = [
     ../../modules/home
   ];
+
+  # --- XDG --- #
+  # XDG config for default applications.
+  # To know the type of a file, do:
+  #    file --mime-type -b $file_name
+  #
+  # See https://wiki.nixos.org/wiki/Default_applications
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      # File explorer
+      "inode/directory" = ["nemo.desktop"];
+      "application/x-gnome-saved-search" = ["nemo.desktop"];
+
+      # Web browser
+      "text/html" = "firefox.desktop";
+      "x-scheme-handler/http" = "firefox.desktop";
+      "x-scheme-handler/https" = "firefox.desktop";
+      "x-scheme-handler/about" = "firefox.desktop";
+      "x-scheme-handler/unknown" = "firefox.desktop";
+    };
+    # Creating .desktop entries
+  };
+  xdg.desktopEntries.nemo = {
+    name = "Nemo";
+    exec = "${pkgs.nemo-with-extensions}/bin/nemo";
+  };
+
+  # Setting up the default terminal emulator for Nemo
+
+  dconf = {
+    settings = {
+      "org/cinnamon/desktop/applications/terminal" = {
+        exec = "alacritty";
+      };
+    };
+  };
+  # --- Enabling or disabling apps --- #
 
   git.enable = true;
   k8s.enable = true;
