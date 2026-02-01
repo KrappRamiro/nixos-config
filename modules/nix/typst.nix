@@ -7,7 +7,7 @@
   options = {
     typst.enable =
       lib.mkEnableOption
-      "Enables typst";
+      "Enables typst, an alternative to Latex, but easier";
   };
 
   config = lib.mkIf config.typst.enable {

@@ -4,5 +4,6 @@
     ./rust.nix
     ./pgadmin.nix
     ./typst.nix
+    ./doctl.nix
   ];
 }

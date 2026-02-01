@@ -67,4 +67,5 @@
   rust.enable = true;
   pgadmin.enable = true;
   typst.enable = true;
+  doctl.enable = true;
 }
