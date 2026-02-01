@@ -14,6 +14,9 @@
         "screen_down" = ["<C-d>"];
         "screen_up" = ["<C-u>"];
       };
+      config = {
+        add_newlines_when_copying_text = "true";
+      };
     };
   };
 }
