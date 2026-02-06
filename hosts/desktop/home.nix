@@ -124,6 +124,7 @@
   useful.enable = true;
   zsh.enable = true;
   alacritty.enable = true;
+  chromium.enable = true;
   hyprland.enable = true;
   firefox.enable = true;
   rofi.enable = true;

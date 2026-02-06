@@ -11,6 +11,7 @@
     ./cli/zsh.nix
     ./cli/rust.nix
     ./gui/alacritty.nix
+    ./gui/chromium.nix
     ./gui/firefox.nix
     ./gui/hyprland.nix
     ./gui/screenshotin.nix
