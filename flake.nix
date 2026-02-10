@@ -11,7 +11,7 @@
     # --- NEOVIM WITH NVF
     # Required, nvf works best and only directly supports flakes
     nvf = {
-      url = "github:NotAShelf/nvf";
+      url = "github:NotAShelf/nvf/ef1f22efaf4aa37ba9382a7d1807fa8ac9c097fd";
       # You can override the input nixpkgs to follow your system's
       # instance of nixpkgs. This is safe to do as nvf does not depend
       # on a binary cache.

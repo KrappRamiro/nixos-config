@@ -14,6 +14,7 @@
     ./gui/chromium.nix
     ./gui/firefox.nix
     ./gui/hyprland.nix
+    ./gui/mako.nix
     ./gui/screenshotin.nix
     ./gui/rofi-launcher.nix
     ./gui/sioyek.nix

@@ -133,4 +133,5 @@
   rust.enable = true;
   docker.enable = true;
   sioyek.enable = true;
+  mako.enable = true;
 }
