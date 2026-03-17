@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }: {
   options = {
@@ -18,7 +19,7 @@
     home.packages = with pkgs; [
       just
       tree
-      devenv
+      inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.devenv # I want version 2.0 which is not yet in 25.11
       neofetch
 
       # archives

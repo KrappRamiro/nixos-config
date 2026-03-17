@@ -2,6 +2,7 @@
   description = "A simple NixOS flake";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
@@ -27,6 +28,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-unstable,
     home-manager,
     nvf,
     my-nvim,
@@ -45,6 +47,7 @@
 
           # This applies the overlay to the system instance of pkgs
           ({pkgs, ...}: {
+            home-manager.extraSpecialArgs = {inherit inputs;}; # allows home-manager to access our flake inputs, allows me to unstall things from unstable nixpkgs
             environment.systemPackages = [
               my-nvim.packages.x86_64-linux.default
             ];
