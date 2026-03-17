@@ -15,7 +15,10 @@
         markdown.enable = true;
         markdown.extensions.markview-nvim.enable = true;
         css.enable = true;
-        html.enable = true;
+        html = {
+          enable = true;
+          format.type = "prettier";
+        };
         # FIXME: Enable SQL once i fix it
         sql.enable = false;
         ts.enable = true;

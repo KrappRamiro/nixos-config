@@ -33,7 +33,11 @@
 
   # Force apps to use Wayland
   environment.sessionVariables = {
+    # https://www.reddit.com/r/NixOS/comments/1qct2k7/comment/nzqrzcu/?context=3
     NIXOS_OZONE_WL = "1";
+
+    # Forces Electron apps to use Wayland
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
   };
 
   # This value determines the NixOS release from which the default

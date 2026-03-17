@@ -125,6 +125,10 @@
             color = "rgba(1a1a1aee)";
           };
         };
+        master = {
+          slave_count_for_center_master = 0;
+          orientation = "center";
+        };
       };
     };
   };

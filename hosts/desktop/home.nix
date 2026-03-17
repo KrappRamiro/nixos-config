@@ -134,4 +134,5 @@
   docker.enable = true;
   sioyek.enable = true;
   mako.enable = true;
+  claude.enable = true;
 }

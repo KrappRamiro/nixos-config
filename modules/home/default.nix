@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ./cli/claude.nix
     ./cli/docker.nix
     ./cli/git.nix
     ./cli/k8s.nix

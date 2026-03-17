@@ -20,6 +20,8 @@
 
     # See https://github.com/NotAShelf/nvf/discussions/1250
     rust-overlay.url = "github:oxalica/rust-overlay";
+
+    my-nvim.url = "path:/home/krapp/dev/neovim-config";
   };
 
   outputs = {
@@ -27,6 +29,7 @@
     nixpkgs,
     home-manager,
     nvf,
+    my-nvim,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -42,6 +45,9 @@
 
           # This applies the overlay to the system instance of pkgs
           ({pkgs, ...}: {
+            environment.systemPackages = [
+              my-nvim.packages.x86_64-linux.default
+            ];
             nixpkgs.overlays = [inputs.rust-overlay.overlays.default];
           })
         ];

@@ -1,4 +1,6 @@
 {pkgs, ...}: {
+  # Force the system to recognize the Samsung Odyssey CRG9 DPI
+  services.xserver.dpi = 109;
   #  search fonts with
   # fc-list : family style | less
   fonts = {
@@ -24,11 +26,23 @@
       terminus_font
     ];
 
-    # This creates a font alias called terminal-font, which uses the FiraCode Nerd Font, and in case it needs emojis, falls back to Noto Color Emoji
-    # This virtual font (again, called terminal-font) is used in your Terminal Emulator of choice (Alacritty, Kitty, Ghostty, etc...)
     fontconfig = {
       enable = true;
 
+      antialias = true;
+      hinting = {
+        enable = true;
+        autohint = false; # Preferred to use the font's own hinting
+        style = "slight"; # Try "slight" or "none" for your resolution
+      };
+
+      subpixel = {
+        rgba = "rgb"; # Standard for most LCD/LED ultrawides
+        lcdfilter = "default";
+      };
+
+      # This creates a font alias called terminal-font, which uses the FiraCode Nerd Font, and in case it needs emojis, falls back to Noto Color Emoji
+      # This virtual font (again, called terminal-font) is used in your Terminal Emulator of choice (Alacritty, Kitty, Ghostty, etc...)
       # Create the terminal-font alias
       defaultFonts = {
         monospace = [
