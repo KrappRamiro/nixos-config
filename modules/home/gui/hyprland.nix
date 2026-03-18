@@ -15,10 +15,11 @@
       systemd.enable = false;
       xwayland = {enable = true;};
       settings = {
-        exec-once = [
-          "mako" # Notifications service
-          # "waybar" # TODO: Add support for waybar
-        ];
+        exec-once =
+          [
+            # "waybar" # TODO: Add support for waybar
+          ]
+          ++ lib.optional config.mako.enable "mako";
 
         debug = {
           disable_logs = false;

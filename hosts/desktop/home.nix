@@ -135,4 +135,5 @@
   sioyek.enable = true;
   mako.enable = true;
   claude.enable = true;
+  direnv.enable = true;
 }
