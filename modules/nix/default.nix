@@ -5,5 +5,6 @@
     ./pgadmin.nix
     ./typst.nix
     ./doctl.nix
+    ./vlc.nix
   ];
 }

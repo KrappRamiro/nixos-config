@@ -72,4 +72,5 @@
   pgadmin.enable = true;
   typst.enable = true;
   doctl.enable = true;
+  vlc.enable = true;
 }

@@ -23,7 +23,14 @@
         sql.enable = false;
         ts.enable = true;
         lua.enable = true;
-        python.enable = true;
+        python = {
+          enable = true;
+          lsp.servers = ["basedpyright"]; # This is already your default
+
+          # This disabled the mypy error reporting, completely useless because i use basedpyright
+          extraDiagnostics.enable = false;
+          format.type = ["ruff"];
+        };
         typst.enable = true;
         yaml.enable = true;
         bash.enable = true;
@@ -33,6 +40,10 @@
           # "The version of the proc-macro server in your Rust toolchain is newer than the version supported by your rust-analyzer"
           lsp.package = pkgs.rust-bin.stable.latest.rust-analyzer;
           extensions.crates-nvim.enable = true;
+        };
+        terraform = {
+          enable = true;
+          lsp.servers = ["tofuls-tf"];
         };
 
         astro.enable = true;
@@ -46,6 +57,12 @@
         }
       ];
       autocmds = [
+        {
+          enable = true;
+          event = ["BufEnter"];
+          pattern = ["*"];
+          command = "setlocal indentexpr=nvim_treesitter#indent()";
+        }
         {
           enable = true;
           event = ["FileType"];

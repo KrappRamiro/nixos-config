@@ -136,4 +136,5 @@
   mako.enable = true;
   claude.enable = true;
   direnv.enable = true;
+  awscli.enable = true;
 }

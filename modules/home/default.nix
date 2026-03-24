@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ./cli/aws-cli.nix
     ./cli/claude.nix
     ./cli/direnv.nix
     ./cli/docker.nix
