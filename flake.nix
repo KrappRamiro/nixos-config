@@ -23,6 +23,8 @@
     rust-overlay.url = "github:oxalica/rust-overlay";
 
     my-nvim.url = "path:/home/krapp/dev/neovim-config";
+
+    nur.url = "github:nix-community/NUR";
   };
 
   outputs = {
@@ -32,10 +34,11 @@
     home-manager,
     nvf,
     my-nvim,
+    nur,
     ...
   } @ inputs: let
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
+    stdenv.hostPlatform.system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${stdenv.hostPlatform.system};
   in {
     nixosConfigurations = {
       desktop = nixpkgs.lib.nixosSystem {
@@ -48,10 +51,17 @@
           # This applies the overlay to the system instance of pkgs
           ({pkgs, ...}: {
             home-manager.extraSpecialArgs = {inherit inputs;}; # allows home-manager to access our flake inputs, allows me to unstall things from unstable nixpkgs
+
+            # This ensures the system-level nixpkgs also sees the flag
+            nixpkgs.config.allowUnfree = true;
+
             environment.systemPackages = [
               my-nvim.packages.x86_64-linux.default
             ];
-            nixpkgs.overlays = [inputs.rust-overlay.overlays.default];
+            nixpkgs.overlays = [
+              inputs.rust-overlay.overlays.default
+              inputs.nur.overlays.default
+            ];
           })
         ];
       };

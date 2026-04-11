@@ -19,7 +19,7 @@
     home.packages = with pkgs; [
       just
       tree
-      inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.devenv # I want version 2.0 which is not yet in 25.11
+      inputs.nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.devenv # I want version 2.0 which is not yet in 25.11
       neofetch
 
       # archives

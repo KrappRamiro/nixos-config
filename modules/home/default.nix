@@ -4,12 +4,14 @@
     ./cli/claude.nix
     ./cli/direnv.nix
     ./cli/docker.nix
+    ./cli/gh.nix
     ./cli/git.nix
     ./cli/k8s.nix
     ./cli/monitoring.nix
     ./cli/networking.nix
     ./cli/systools.nix
     ./cli/tealdeer.nix
+    ./cli/npm.nix
     ./cli/useful.nix
     ./cli/zsh.nix
     ./cli/rust.nix
@@ -20,6 +22,8 @@
     ./gui/mako.nix
     ./gui/screenshotin.nix
     ./gui/rofi-launcher.nix
+    ./gui/ghostty.nix
+    ./gui/calibre.nix
     ./gui/sioyek.nix
   ];
 }

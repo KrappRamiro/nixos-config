@@ -63,6 +63,11 @@
   # See https://drakerossman.com/blog/wayland-on-nixos-confusion-conquest-triumph
   security.polkit.enable = true;
 
+  security.pam.loginLimits = [
+    { domain = "*"; type = "soft"; item = "nofile"; value = "65536"; }
+    { domain = "*"; type = "hard"; item = "nofile"; value = "65536"; }
+  ];
+
   # Drivers settings
   drivers.amdgpu.enable = true;
   drivers.local-hardware-clock.enable = true;
@@ -73,4 +78,5 @@
   typst.enable = true;
   doctl.enable = true;
   vlc.enable = true;
+  calibre-kindle.enable = true;
 }

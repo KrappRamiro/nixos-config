@@ -6,5 +6,6 @@
     ./typst.nix
     ./doctl.nix
     ./vlc.nix
+    ./calibre-kindle.nix
   ];
 }

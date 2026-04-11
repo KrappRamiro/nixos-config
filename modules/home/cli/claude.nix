@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  inputs,
   ...
 }: {
   options = {
@@ -9,8 +10,8 @@
   };
 
   config = lib.mkIf config.claude.enable {
-    home.packages = with pkgs; [
-      claude-code
+    home.packages = [
+      inputs.nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.claude-code
     ];
 
     # Configure claude.json for NixOS compatibility

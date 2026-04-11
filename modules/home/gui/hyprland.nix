@@ -43,9 +43,9 @@
             "$mod CONTROLALT, SPACE, exec, hyprctl switchxkblayout all next"
 
             # Screenshot
-            "$mod, S, exec, screenshotin"
+            "$mod SHIFT, S, exec, screenshotin"
             # Launching programs
-            "$mod, Return, exec, alacritty"
+            "$mod, Return, exec, ghostty"
             "$mod, SPACE, exec, rofi -show drun"
 
             # Killing a window
@@ -129,6 +129,9 @@
         master = {
           slave_count_for_center_master = 0;
           orientation = "center";
+        };
+        misc = {
+          middle_click_paste = false;
         };
       };
     };

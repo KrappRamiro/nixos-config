@@ -13,7 +13,7 @@
     programs.awscli = {
       enable = true;
       # I need a version that has `aws login`
-      package = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}.awscli2;
+      package = inputs.nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.awscli2;
       # You can still use the module's other features
       settings = {
         default = {
@@ -26,5 +26,8 @@
     home.sessionVariables = {
       AWS_CONFIG_FILE = "${config.home.homeDirectory}/.aws/file-used-to-stop-aws-login-to-complain-about-a-read-only-filesystem";
     };
+    home.packages = [
+      pkgs.ssm-session-manager-plugin
+    ];
   };
 }

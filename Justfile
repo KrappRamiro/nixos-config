@@ -1,13 +1,14 @@
 
 
 deploy:
-	nixos-rebuild switch --flake .#desktop --sudo
+    NIXPKGS_ALLOW_UNFREE=1  nixos-rebuild switch --flake .#desktop --sudo --impure
+    #TODO: I should not use impure, fuck it, fixing another day. Its because home-manager wont install unfree software
 
 
 debug:
-	nixos-rebuild switch --flake . --sudo --show-trace --verbose
+	NIXPKGS_ALLOW_UNFREE=1  nixos-rebuild switch --flake . --sudo --show-trace --verbose
 
 update:
-	nix flake update
+	NIXPKGS_ALLOW_UNFREE=1  nix flake update
 
 

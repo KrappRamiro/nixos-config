@@ -1,0 +1,46 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate tag
+        id: tag
+        run: |
+          DATE=$(date -u +%Y.%m.%d)
+          BASE="v${DATE}"
+          LATEST=$(git tag --list "${BASE}*" | sort -V | tail -1)
+          if [ -z "$LATEST" ]; then
+            TAG="${BASE}"
+          else
+            SUFFIX="${LATEST#${BASE}}"
+            if [ -z "$SUFFIX" ]; then
+              TAG="${BASE}.2"
+            else
+              N="${SUFFIX#.}"
+              TAG="${BASE}.$((N + 1))"
+            fi
+          fi
+          echo "tag=${TAG}" >> $GITHUB_OUTPUT
+
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="${{ steps.tag.outputs.tag }}"
+          git tag "$TAG"
+          git push origin "$TAG"
+          gh release create "$TAG" \
+            --title "$TAG" \
+            --generate-notes

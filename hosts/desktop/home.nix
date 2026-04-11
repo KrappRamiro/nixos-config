@@ -110,12 +110,13 @@
   dconf = {
     settings = {
       "org/cinnamon/desktop/applications/terminal" = {
-        exec = "alacritty";
+        exec = "ghostty";
       };
     };
   };
   # --- Enabling or disabling apps --- #
 
+  gh.enable = true;
   git.enable = true;
   k8s.enable = true;
   monitoring.enable = true;
@@ -124,6 +125,7 @@
   useful.enable = true;
   zsh.enable = true;
   alacritty.enable = true;
+  ghostty.enable = true;
   chromium.enable = true;
   hyprland.enable = true;
   firefox.enable = true;
@@ -136,5 +138,7 @@
   mako.enable = true;
   claude.enable = true;
   direnv.enable = true;
+  npm.enable = true;
   awscli.enable = true;
+  calibre.enable = true;
 }

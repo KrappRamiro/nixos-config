@@ -15,7 +15,7 @@
         modi = "drun,filebrowser";
         show-icons = true;
         hover-select = true;
-        terminal = "alacritty";
+        terminal = "ghostty";
         kb-cancel = "Escape";
 
         icon-theme = "Papirus";
