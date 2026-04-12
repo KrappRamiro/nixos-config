@@ -53,6 +53,7 @@
 
   # Ryzen 5 PRO 7535U has AMD Radeon 660M (RDNA 2) integrated graphics
   drivers.amdgpu.enable = true;
+  fonts.dpi = 162; # 14" 1920x1200
 
   nvf.enable = true;
   rust.enable = true;
