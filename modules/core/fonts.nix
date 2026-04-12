@@ -1,6 +1,17 @@
-{pkgs, ...}: {
-  # Force the system to recognize the Samsung Odyssey CRG9 DPI
-  services.xserver.dpi = 109;
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}: {
+  options.fonts.dpi = lib.mkOption {
+    type = lib.types.nullOr lib.types.int;
+    default = null;
+    description = "Force a specific DPI for xserver. Null means no override (use auto-detection).";
+  };
+
+  config = {
+  services.xserver.dpi = lib.mkIf (config.fonts.dpi != null) config.fonts.dpi;
   #  search fonts with
   # fc-list : family style | less
   fonts = {
@@ -62,5 +73,6 @@
         </fontconfig>
       '';
     };
+  };
   };
 }

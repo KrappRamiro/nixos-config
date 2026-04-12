@@ -66,14 +66,27 @@
         ];
       };
 
-      # thinkpad = nixpkgs.lib.nixosSystem {
-      #	specialArgs = { inherit inputs; };
-      #	modules = [
-      #		./hosts/thinkpad/configuration.nix
-      #		./nixosModules
-      #	];
-      #
-      #};
+      thinkpad = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [
+          inputs.home-manager.nixosModules.default
+          nvf.nixosModules.default
+          ./hosts/thinkpad/configuration.nix
+
+          ({pkgs, ...}: {
+            home-manager.extraSpecialArgs = {inherit inputs;};
+            nixpkgs.config.allowUnfree = true;
+
+            environment.systemPackages = [
+              my-nvim.packages.x86_64-linux.default
+            ];
+            nixpkgs.overlays = [
+              inputs.rust-overlay.overlays.default
+              inputs.nur.overlays.default
+            ];
+          })
+        ];
+      };
     };
   };
 }

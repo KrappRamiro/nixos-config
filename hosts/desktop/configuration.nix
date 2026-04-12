@@ -70,6 +70,7 @@
 
   # Drivers settings
   drivers.amdgpu.enable = true;
+  fonts.dpi = 109; # Samsung Odyssey CRG9
   drivers.local-hardware-clock.enable = true;
 
   nvf.enable = true;
