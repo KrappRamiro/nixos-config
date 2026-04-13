@@ -127,7 +127,9 @@
   alacritty.enable = true;
   ghostty.enable = true;
   chromium.enable = true;
-  hyprland.enable = true;
+  sway.enable = true;
+  sway.wallpapers = ../../assets/wallpapers;
+  waybar.enable = true;
   firefox.enable = true;
   rofi.enable = true;
   tealdeer.enable = true;

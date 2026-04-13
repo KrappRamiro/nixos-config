@@ -1,0 +1,2 @@
+- [ ] Incorporate Stylix
+- [ ] Manage windows boot via Linux Boot Manager

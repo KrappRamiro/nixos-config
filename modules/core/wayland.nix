@@ -4,42 +4,51 @@
   inputs,
   ...
 }: {
-  # --- Wayland configuration
-  # This needs to be set, there is no choice about it
-  programs.hyprland = {
+  programs.sway = {
     enable = true;
-    # NixOS 24.11 added support for launching Hyprland with Universal Wayland Session Manager (UWSM) and is the recommended way to launch Hyprland as it neatly integrates with Systemd.
-    withUWSM = true; # recommended for most users
+    wrapperFeatures.gtk = true; # Fixes GTK 3 app issues (file choosers, etc.)
+  };
+
+  # UWSM properly initializes graphical-session.target and the dbus/systemd
+  # environment for Wayland compositors — same as Hyprland's withUWSM = true.
+  programs.uwsm = {
+    enable = true;
+    waylandCompositors.sway = {
+      prettyName = "Sway";
+      comment = "Sway compositor managed by UWSM";
+      binPath = "/run/current-system/sw/bin/sway";
+    };
   };
 
   services.greetd = {
     enable = true;
-
     settings = {
       default_session = {
-        # Launch tuigreet, a TUI login screen
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --window-padding 10 --cmd 'uwsm start hyprland-uwsm.desktop'";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --window-padding 10 --cmd 'uwsm start sway-uwsm.desktop'";
         user = "krapp";
       };
     };
   };
 
-  # Screensharing
-  # xdg.portal = {
-  #   enable = true;
-  #   extraPortals = with pkgs; [xdg-desktop-portal-hyprland];
-  # };
+  # Required for swaylock to authenticate via PAM
+  security.pam.services.swaylock = {};
+
+  # Screensharing via xdg-desktop-portal-wlr
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+  };
 
   environment.systemPackages = with pkgs; [
     wl-clipboard
-    # This three packages are needed for screenshotin
+    # These three packages are needed for screenshotin
     grim
     swappy
     slurp
 
-    # This for monitor brightness control
+    # Monitor brightness control
     brightnessctl
-    # This for controlling music with keyboard
+    # Controlling music with keyboard
     playerctl
   ];
 }

@@ -18,7 +18,8 @@
     ./gui/alacritty.nix
     ./gui/chromium.nix
     ./gui/firefox.nix
-    ./gui/hyprland.nix
+    ./gui/sway.nix
+    ./gui/waybar.nix
     ./gui/mako.nix
     ./gui/screenshotin.nix
     ./gui/rofi-launcher.nix
