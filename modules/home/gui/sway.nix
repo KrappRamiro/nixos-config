@@ -33,7 +33,7 @@
 
         startup =
           lib.optional config.mako.enable {command = "mako";}
-          ++ lib.optional config.waybar.enable {command = "waybar";}
+          ++ lib.optional config.waybar.enable {command = "env TZ=America/Argentina/Buenos_Aires waybar";}
           ; # wpaperd runs as a systemd user service, no need to start it here
 
         input = {
@@ -49,6 +49,8 @@
         };
 
         floating.modifier = modifier;
+
+        focus.followMouse = false;
 
         keybindings = lib.mkOptionDefault {
           # Launch programs
