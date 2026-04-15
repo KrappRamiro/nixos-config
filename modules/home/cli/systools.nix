@@ -1,6 +1,10 @@
-{ pkgs, lib, config, ... }: {
-
-  options = { systools.enable = lib.mkEnableOption "Enables system tools"; };
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
+  options = {systools.enable = lib.mkEnableOption "Enables system tools";};
 
   config = lib.mkIf config.systools.enable {
     # There are no HomeManager modules for the following packages, so we are installing them this way:
@@ -15,6 +19,7 @@
       ethtool
       pciutils # lspci
       usbutils # lsusb
+      wev # wayland event viewer
     ];
   };
 }

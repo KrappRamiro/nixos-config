@@ -45,6 +45,16 @@
     { domain = "*"; type = "hard"; item = "nofile"; value = "65536"; }
   ];
 
+  # ThinkPad special keys (volume, brightness, mic mute)
+  boot.kernelModules = [ "thinkpad_acpi" ];
+
+  # Allow the video group to write to the mic mute LED sysfs (for keybinding sync)
+  services.udev.extraRules = ''
+    SUBSYSTEM=="leds", KERNEL=="platform::micmute", ACTION=="add", \
+      RUN+="${pkgs.coreutils}/bin/chgrp video /sys/class/leds/platform::micmute/brightness", \
+      RUN+="${pkgs.coreutils}/bin/chmod g+w /sys/class/leds/platform::micmute/brightness"
+  '';
+
   # Laptop power management (AMD-friendly)
   services.tlp.enable = true;
 

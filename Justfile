@@ -10,4 +10,7 @@ debug:
 update:
     NIXPKGS_ALLOW_UNFREE=1 nix flake update
 
+logout:
+    swaymsg exit
+
 

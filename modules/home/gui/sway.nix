@@ -39,6 +39,7 @@
         input = {
           "type:keyboard" = {
             xkb_layout = "us,latam";
+            xkb_options = "ctrl:nocaps";
             accel_profile = "flat";
           };
           "type:touchpad" = {
@@ -56,6 +57,7 @@
           # Launch programs
           "${modifier}+Return" = "exec ghostty";
           "${modifier}+space" = "exec rofi -show drun";
+          "XF86Assistant" = "exec rofi -show drun"; # Copilot key
 
           # Kill window
           "${modifier}+q" = "kill";
@@ -109,6 +111,11 @@
           "XF86AudioRaiseVolume" = "exec wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%+";
           "XF86AudioLowerVolume" = "exec wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%-";
           "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          # Toggles mic mute in PipeWire (wpctl), then syncs the ThinkPad mic mute LED
+          # at /sys/class/leds/platform::micmute/brightness. Requires:
+          #   1. thinkpad_acpi kernel module loaded (hosts/thinkpad/configuration.nix)
+          #   2. udev rule chgrp+chmod on the LED sysfs for the video group (hosts/thinkpad/configuration.nix)
+          "XF86AudioMicMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && wpctl get-volume @DEFAULT_AUDIO_SOURCE@ | grep -q MUTED && echo 1 > /sys/class/leds/platform::micmute/brightness || echo 0 > /sys/class/leds/platform::micmute/brightness";
 
           # Screen brightness
           "XF86MonBrightnessUp" = "exec brightnessctl s 5%+";

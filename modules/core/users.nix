@@ -8,7 +8,7 @@
   users.users.krapp = {
     isNormalUser = true;
     description = "Ramiro Krapp";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "video"];
     packages = with pkgs; [];
     shell = pkgs.zsh;
   };
