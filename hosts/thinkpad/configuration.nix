@@ -62,7 +62,7 @@
   services.tlp = {
     enable = true;
     settings = {
-      START_CHARGE_THRESH_BAT0 = 40;
+      START_CHARGE_THRESH_BAT0 = 50;
       STOP_CHARGE_THRESH_BAT0 = 80;
       CHARGE_BEHAVIOUR_BAT0 = "auto";
     };

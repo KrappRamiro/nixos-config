@@ -21,6 +21,7 @@
       fira-code-symbols
       font-awesome
       jetbrains-mono
+      nerd-fonts.jetbrains-mono
       material-icons
       nerd-fonts.im-writing
       nerd-fonts.blex-mono

@@ -16,7 +16,7 @@ logout:
 # Battery profile: conserve battery lifespan (charge between 40-80%)
 battery-longevity:
     echo "auto" | sudo tee /sys/class/power_supply/BAT0/charge_behaviour
-    sudo tlp setcharge 40 80 BAT0
+    sudo tlp setcharge 50 80 BAT0
 
 # Battery profile: charge to full (e.g. before a long day without outlet)
 battery-full:

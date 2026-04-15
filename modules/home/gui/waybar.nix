@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: {
   options.waybar.enable = lib.mkEnableOption "Enables Waybar status bar";
@@ -17,7 +18,7 @@
 
           modules-left = ["sway/workspaces"];
           modules-center = ["clock"];
-          modules-right = ["wireplumber" "battery" "tray"];
+          modules-right = ["wireplumber" "custom/battery-profile" "tray"];
 
           "sway/workspaces" = {
             disable-scroll = true;
@@ -39,14 +40,31 @@
             on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
           };
 
-          battery = {
-            format = "{icon}";
-            format-icons = ["" "" "" "" ""];
-            tooltip-format = "{capacity}%";
-            states = {
-              warning = 30;
-              critical = 15;
-            };
+          # TODO: battery icons (format-icons) are not rendering despite JetBrainsMono Nerd Font
+          # being installed. Replaced with plain text until root cause is found.
+          "custom/battery-profile" = {
+            exec = pkgs.writeShellScript "battery-profile" ''
+              capacity=$(cat /sys/class/power_supply/BAT0/capacity 2>/dev/null || echo "?")
+              start=$(cat /sys/class/power_supply/BAT0/charge_start_threshold 2>/dev/null || echo "?")
+              stop=$(cat /sys/class/power_supply/BAT0/charge_stop_threshold 2>/dev/null || echo "?")
+              behaviour=$(cat /sys/class/power_supply/BAT0/charge_behaviour 2>/dev/null | grep -oP '\[\K[^\]]+' || echo "?")
+
+              if [ "''${behaviour}" = "inhibit-charge" ]; then
+                profile="AC-only"
+              else
+                profile="''${start}-''${stop}%"
+              fi
+
+              class=""
+              if [ "''${capacity}" -le 15 ] 2>/dev/null; then class="critical"
+              elif [ "''${capacity}" -le 30 ] 2>/dev/null; then class="warning"
+              fi
+
+              echo "{\"text\": \"BAT: ''${capacity}% | ''${profile}\", \"class\": \"''${class}\"}"
+            '';
+            return-type = "json";
+            interval = 30;
+            rotate = 90;
           };
 
           tray = {
@@ -116,17 +134,17 @@
           color: #6c7086;
         }
 
-        #battery {
+        #custom-battery-profile {
           padding: 8px 0;
           color: #a6e3a1;
-          font-size: 16px;
+          font-size: 11px;
         }
 
-        #battery.warning {
+        #custom-battery-profile.warning {
           color: #f9e2af;
         }
 
-        #battery.critical {
+        #custom-battery-profile.critical {
           color: #f38ba8;
           animation-name: blink;
           animation-duration: 0.5s;
