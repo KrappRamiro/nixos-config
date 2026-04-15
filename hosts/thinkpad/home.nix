@@ -71,4 +71,5 @@
   npm.enable = true;
   awscli.enable = true;
   calibre.enable = true;
+  steam.enable = true;
 }

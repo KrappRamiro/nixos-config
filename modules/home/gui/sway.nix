@@ -49,7 +49,14 @@
           };
         };
 
-        floating.modifier = modifier;
+        floating = {
+          modifier = modifier;
+          criteria = [
+            { class = "steam"; }
+            { class = "Steam"; }
+            { title = "Steam"; }
+          ];
+        };
 
         focus.followMouse = false;
 

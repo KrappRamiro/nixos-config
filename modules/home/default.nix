@@ -25,5 +25,6 @@
     ./gui/rofi-launcher.nix
     ./gui/ghostty.nix
     ./gui/calibre.nix
+    ./gui/steam.nix
   ];
 }

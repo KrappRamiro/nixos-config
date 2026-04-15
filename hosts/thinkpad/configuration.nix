@@ -75,6 +75,10 @@
   drivers.amdgpu.enable = true;
   fonts.dpi = 162; # 14" 1920x1200
 
+  programs.steam.enable = true;
+  programs.steam.remotePlay.openFirewall = true;
+  programs.gamemode.enable = true;
+
   nvf.enable = true;
   rust.enable = true;
   pgadmin.enable = true;
