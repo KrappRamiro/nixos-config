@@ -136,7 +136,6 @@
   screenshotin.enable = true;
   rust.enable = true;
   docker.enable = true;
-  sioyek.enable = true;
   mako.enable = true;
   claude.enable = true;
   direnv.enable = true;
