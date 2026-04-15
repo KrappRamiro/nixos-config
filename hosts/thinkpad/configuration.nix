@@ -56,7 +56,17 @@
   '';
 
   # Laptop power management (AMD-friendly)
-  services.tlp.enable = true;
+  # Battery thresholds keep charge between 40-80% to extend battery lifespan.
+  # CHARGE_BEHAVIOUR resets to "auto" on boot in case "inhibit-charge" was set manually
+  # via `just battery-ac-only` (which persists across reboots on this ThinkPad).
+  services.tlp = {
+    enable = true;
+    settings = {
+      START_CHARGE_THRESH_BAT0 = 40;
+      STOP_CHARGE_THRESH_BAT0 = 80;
+      CHARGE_BEHAVIOUR_BAT0 = "auto";
+    };
+  };
 
   # Hardware clock (useful if dual-booting with Windows)
   drivers.local-hardware-clock.enable = true;
