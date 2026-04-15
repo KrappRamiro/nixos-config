@@ -87,14 +87,17 @@
         "wrappers": "wrappers"
       },
       "locked": {
-        "lastModified": 1773080888,
-        "narHash": "sha256-1I6MYof6uqXyzcncS0P6nurYSRONLytoZTjDIpS74wA=",
-        "path": "/home/krapp/dev/krappvim",
-        "type": "path"
+        "lastModified": 1776213067,
+        "narHash": "sha256-xEgx8CRgMjVgjMItQH6HimliY4GZkLGRkpk9aiGyqNw=",
+        "owner": "KrappRamiro",
+        "repo": "krappvim",
+        "rev": "7167c41f824b3b885c016dd7f1fd109efecfd3a0",
+        "type": "github"
       },
       "original": {
-        "path": "/home/krapp/dev/krappvim",
-        "type": "path"
+        "owner": "KrappRamiro",
+        "repo": "krappvim",
+        "type": "github"
       }
     },
     "mnw": {

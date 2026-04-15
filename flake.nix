@@ -22,7 +22,7 @@
     # See https://github.com/NotAShelf/nvf/discussions/1250
     rust-overlay.url = "github:oxalica/rust-overlay";
 
-    krappvim.url = "path:/home/krapp/dev/krappvim";
+    krappvim.url = "github:KrappRamiro/krappvim";
 
     nur.url = "github:nix-community/NUR";
   };
