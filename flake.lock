@@ -79,6 +79,24 @@
         "type": "github"
       }
     },
+    "krappvim": {
+      "inputs": {
+        "nixpkgs": "nixpkgs",
+        "plugins-lze": "plugins-lze",
+        "plugins-lzextras": "plugins-lzextras",
+        "wrappers": "wrappers"
+      },
+      "locked": {
+        "lastModified": 1773080888,
+        "narHash": "sha256-1I6MYof6uqXyzcncS0P6nurYSRONLytoZTjDIpS74wA=",
+        "path": "/home/krapp/dev/krappvim",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/krapp/dev/krappvim",
+        "type": "path"
+      }
+    },
     "mnw": {
       "locked": {
         "lastModified": 1770419553,
@@ -92,24 +110,6 @@
         "owner": "Gerg-L",
         "repo": "mnw",
         "type": "github"
-      }
-    },
-    "my-nvim": {
-      "inputs": {
-        "nixpkgs": "nixpkgs",
-        "plugins-lze": "plugins-lze",
-        "plugins-lzextras": "plugins-lzextras",
-        "wrappers": "wrappers"
-      },
-      "locked": {
-        "lastModified": 1773080888,
-        "narHash": "sha256-1I6MYof6uqXyzcncS0P6nurYSRONLytoZTjDIpS74wA=",
-        "path": "/home/krapp/dev/neovim-config",
-        "type": "path"
-      },
-      "original": {
-        "path": "/home/krapp/dev/neovim-config",
-        "type": "path"
       }
     },
     "ndg": {
@@ -293,7 +293,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "my-nvim": "my-nvim",
+        "krappvim": "krappvim",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
@@ -337,7 +337,7 @@
     "wrappers": {
       "inputs": {
         "nixpkgs": [
-          "my-nvim",
+          "krappvim",
           "nixpkgs"
         ]
       },

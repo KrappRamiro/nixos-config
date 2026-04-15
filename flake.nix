@@ -22,7 +22,7 @@
     # See https://github.com/NotAShelf/nvf/discussions/1250
     rust-overlay.url = "github:oxalica/rust-overlay";
 
-    my-nvim.url = "path:/home/krapp/dev/neovim-config";
+    krappvim.url = "path:/home/krapp/dev/krappvim";
 
     nur.url = "github:nix-community/NUR";
   };
@@ -33,7 +33,7 @@
     nixpkgs-unstable,
     home-manager,
     nvf,
-    my-nvim,
+    krappvim,
     nur,
     ...
   } @ inputs: let
@@ -56,7 +56,7 @@
             nixpkgs.config.allowUnfree = true;
 
             environment.systemPackages = [
-              my-nvim.packages.x86_64-linux.default
+              krappvim.packages.x86_64-linux.default
             ];
             nixpkgs.overlays = [
               inputs.rust-overlay.overlays.default
@@ -78,7 +78,7 @@
             nixpkgs.config.allowUnfree = true;
 
             environment.systemPackages = [
-              my-nvim.packages.x86_64-linux.default
+              krappvim.packages.x86_64-linux.default
             ];
             nixpkgs.overlays = [
               inputs.rust-overlay.overlays.default

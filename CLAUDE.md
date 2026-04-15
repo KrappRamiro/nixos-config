@@ -21,7 +21,7 @@ The `--impure` flag is intentional — it exists because home-manager won't inst
 
 This is a NixOS flake config for a single host (`desktop`, user `krapp`). There is one active system configuration; the `thinkpad` host is commented out.
 
-**Flake inputs:** `nixpkgs` (25.11 stable), `nixpkgs-unstable`, `home-manager` (release-25.11), `nvf` (Neovim config framework), `rust-overlay`, and a local `my-nvim` flake at `/home/krapp/dev/neovim-config`.
+**Flake inputs:** `nixpkgs` (25.11 stable), `nixpkgs-unstable`, `home-manager` (release-25.11), `nvf` (Neovim config framework), `rust-overlay`, and a local `krappvim` flake at `/home/krapp/dev/krappvim`.
 
 ### Module hierarchy
 

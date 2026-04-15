@@ -2,7 +2,14 @@
 
 ## Setup
 
-Clone the repo and create a `.machine-name` file with the name of the host
+Clone the repo, then symlink `/etc/nixos` to it so NixOS uses it as the live
+configuration:
+
+```bash
+sudo ln -sf /home/krapp/nixos-config /etc/nixos
+```
+
+Then create a `.machine-name` file with the name of the host
 you're configuring (must match a `nixosConfigurations` key in `flake.nix`):
 
 ```bash
