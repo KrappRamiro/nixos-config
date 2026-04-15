@@ -100,6 +100,7 @@
   programs.steam.remotePlay.openFirewall = true;
   programs.gamemode.enable = true;
 
+  fingerprint-scanner.enable = true;
   nvf.enable = true;
   rust.enable = true;
   pgadmin.enable = true;

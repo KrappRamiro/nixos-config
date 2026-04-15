@@ -3,6 +3,7 @@
     ./audio.nix
     ./bluetooth.nix
     ./boot.nix
+    ./fingerprint-scanner.nix
     ./fonts.nix
     ./i18n.nix
     ./networking.nix

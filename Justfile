@@ -10,6 +10,10 @@ debug:
 update:
     NIXPKGS_ALLOW_UNFREE=1 nix flake update
 
+# To re-enroll from scratch: sudo rm -rf /var/lib/fprint/ && sudo systemctl restart fprintd
+fingerprint-enroll:
+    sudo fprintd-enroll krapp
+
 logout:
     swaymsg exit
 
@@ -20,8 +24,7 @@ battery-longevity:
 
 # Battery profile: charge to full (e.g. before a long day without outlet)
 battery-full:
-    echo "auto" | sudo tee /sys/class/power_supply/BAT0/charge_behaviour
-    sudo tlp setcharge 1 100 BAT0
+    sudo tlp fullcharge BAT0
 
 # Battery profile: run purely from AC, ignore battery entirely (preserves charge level)
 battery-ac-only:

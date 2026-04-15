@@ -60,7 +60,16 @@
               elif [ "''${capacity}" -le 30 ] 2>/dev/null; then class="warning"
               fi
 
-              echo "{\"text\": \"BAT: ''${capacity}% | ''${profile}\", \"class\": \"''${class}\"}"
+              ac=$(cat /sys/class/power_supply/AC/online 2>/dev/null || echo "?")
+              status=$(cat /sys/class/power_supply/BAT0/status 2>/dev/null || echo "?")
+
+              if [ "''${ac}" = "1" ]; then
+                charger="CHARGER CONN"
+              else
+                charger="CHARGER NOT_CONN"
+              fi
+
+              echo "{\"text\": \"BAT: ''${capacity}% | ''${profile}\nstatus: ''${status}\n''${charger}\", \"class\": \"''${class}\"}"
             '';
             return-type = "json";
             interval = 30;
