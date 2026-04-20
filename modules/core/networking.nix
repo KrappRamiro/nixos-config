@@ -15,5 +15,5 @@
     # see https://discourse.nixos.org/t/how-to-configure-and-use-proton-vpn-on-nixos/65837
     firewall.checkReversePath = false;
   };
-  environment.systemPackages = with pkgs; [wireguard-tools protonvpn-gui];
+  environment.systemPackages = with pkgs; [wireguard-tools proton-vpn];
 }

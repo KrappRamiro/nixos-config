@@ -20,7 +20,7 @@
       just
       tree
       inputs.nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.devenv # I want version 2.0 which is not yet in 25.11
-      neofetch
+      fastfetch
 
       # archives
       zip
@@ -52,6 +52,9 @@
 
       # Rust toolchain
       rustup
+
+      # Python
+      python3
     ];
   };
 }

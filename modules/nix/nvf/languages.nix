@@ -21,7 +21,7 @@
         };
         # FIXME: Enable SQL once i fix it
         sql.enable = false;
-        ts.enable = true;
+        typescript.enable = true;
         lua.enable = true;
         python = {
           enable = true;
@@ -43,7 +43,7 @@
         };
         terraform = {
           enable = true;
-          lsp.servers = ["tofuls-tf"];
+          lsp.servers = ["tofu-ls"];
         };
 
         astro.enable = true;
