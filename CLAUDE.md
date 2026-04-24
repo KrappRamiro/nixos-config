@@ -62,3 +62,35 @@ The nvf Neovim config lives in `modules/nix/` (not `modules/home/`) because it c
 ### Accessing nixpkgs-unstable
 
 Use `inputs.nixpkgs-unstable.legacyPackages.${pkgs.stdenv.hostPlatform.system}.packageName` — see `modules/home/cli/useful.nix` for a working example (devenv is pulled from unstable this way).
+
+### Installing Claude Code plugins declaratively
+
+Claude Code's `settings.json` is managed by Home Manager as a read-only Nix store symlink, so the interactive plugin installer in the Claude Code UI fails with `EROFS: read-only file system`. Plugins must be installed declaratively.
+
+The correct pattern (discovered from https://github.com/nix-community/home-manager/pull/8934#issuecomment-4172699593) is:
+
+1. Add the plugin marketplace repo as a flake input in `flake.nix` (with `flake = false` since it's not a Nix flake):
+```nix
+claude-plugins-official = {
+  url = "github:anthropics/claude-plugins-official";
+  flake = false;
+};
+```
+
+2. In `modules/home/cli/claude.nix`, reference the marketplace via `marketplaces` and enable specific plugins by name via `settings.enabledPlugins`:
+```nix
+programs.claude-code = {
+  marketplaces = {
+    claude-plugins-official = inputs.claude-plugins-official;
+  };
+  settings = {
+    enabledPlugins = {
+      "rust-analyzer-lsp@claude-plugins-official" = true;
+    };
+  };
+};
+```
+
+The `"plugin-name@marketplace-name"` syntax is how Claude Code resolves which plugin to load from which marketplace. The `inputs` variable is already available in all home modules because `flake.nix` passes it via `home-manager.extraSpecialArgs = { inherit inputs; }`.
+
+To update the marketplace to its latest commit, run `just update` — no manual hash management needed.

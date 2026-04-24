@@ -25,6 +25,11 @@
     krappvim.url = "github:KrappRamiro/krappvim";
 
     nur.url = "github:nix-community/NUR";
+
+    claude-plugins-official = {
+      url = "github:anthropics/claude-plugins-official";
+      flake = false;
+    };
   };
 
   outputs = {
