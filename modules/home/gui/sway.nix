@@ -4,17 +4,35 @@
   pkgs,
   ...
 }: {
-  options.sway.enable = lib.mkEnableOption "Enables Sway";
+  options.sway = {
+    enable = lib.mkEnableOption "Enables Sway";
 
-  options.sway.wallpapers = lib.mkOption {
-    type = lib.types.nullOr lib.types.path;
-    default = null;
-    description = ''
-      Directory of wallpaper images. Nix copies it to the store, making it
-      deterministic and shared across machines via git. wpaperd rotates through
-      all images in the directory. Set per-host in home.nix, e.g.:
-        sway.wallpapers = ../../assets/wallpapers;
-    '';
+    swaylock.enable = lib.mkEnableOption "Enables swaylock screen locker" // {default = true;};
+
+    swayidle = {
+      enable = lib.mkEnableOption "Enables swayidle idle management";
+      lockTimeout = lib.mkOption {
+        type = lib.types.int;
+        default = 1800;
+        description = "Seconds of inactivity before swaylock runs.";
+      };
+      displayOffTimeout = lib.mkOption {
+        type = lib.types.int;
+        default = 600;
+        description = "Seconds of inactivity before outputs are powered off.";
+      };
+    };
+
+    wallpapers = lib.mkOption {
+      type = lib.types.nullOr lib.types.path;
+      default = null;
+      description = ''
+        Directory of wallpaper images. Nix copies it to the store, making it
+        deterministic and shared across machines via git. wpaperd rotates through
+        all images in the directory. Set per-host in home.nix, e.g.:
+          sway.wallpapers = ../../assets/wallpapers;
+      '';
+    };
   };
 
   config = lib.mkIf config.sway.enable {
@@ -33,8 +51,7 @@
 
         startup =
           lib.optional config.mako.enable {command = "mako";}
-          ++ lib.optional config.waybar.enable {command = "env TZ=America/Argentina/Buenos_Aires waybar";}
-          ; # wpaperd runs as a systemd user service, no need to start it here
+          ++ lib.optional config.waybar.enable {command = "env TZ=America/Argentina/Buenos_Aires waybar";}; # wpaperd runs as a systemd user service, no need to start it here
 
         input = {
           "type:keyboard" = {
@@ -50,11 +67,11 @@
         };
 
         floating = {
-          modifier = modifier;
+          inherit modifier;
           criteria = [
-            { class = "steam"; }
-            { class = "Steam"; }
-            { title = "Steam"; }
+            {class = "steam";}
+            {class = "Steam";}
+            {title = "Steam";}
           ];
         };
 
@@ -146,7 +163,7 @@
       };
     };
 
-    programs.swaylock = {
+    programs.swaylock = lib.mkIf config.sway.swaylock.enable {
       enable = true;
       settings = {
         color = "000000";
@@ -154,20 +171,23 @@
       };
     };
 
-    services.swayidle = {
+    services.swayidle = lib.mkIf config.sway.swayidle.enable {
       enable = true;
-      timeouts = [
-        {
-          timeout = 300;
+      timeouts =
+        lib.optional config.sway.swaylock.enable {
+          timeout = config.sway.swayidle.lockTimeout;
           command = "${pkgs.swaylock}/bin/swaylock -f";
         }
-        {
-          timeout = 600;
-          command = ''${pkgs.sway}/bin/swaymsg "output * power off"'';
-          resumeCommand = ''${pkgs.sway}/bin/swaymsg "output * power on"'';
-        }
-      ];
-      events = {
+        ++ [
+          {
+            timeout = config.sway.swayidle.displayOffTimeout;
+            command = ''${pkgs.sway}/bin/swaymsg "output * power off"'';
+            resumeCommand = ''${pkgs.sway}/bin/swaymsg "output * power on"'';
+          }
+        ];
+
+      # If swaylock is enabled, we should lock before sleep
+      events = lib.mkIf config.sway.swaylock.enable {
         before-sleep = "${pkgs.swaylock}/bin/swaylock -f";
       };
     };

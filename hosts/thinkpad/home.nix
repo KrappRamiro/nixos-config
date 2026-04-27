@@ -56,8 +56,12 @@
   alacritty.enable = true;
   ghostty.enable = true;
   chromium.enable = true;
-  sway.enable = true;
-  sway.wallpapers = ../../assets/wallpapers;
+  sway = {
+    enable = true;
+    swayidle.enable = true;
+    swaylock.enable = true;
+    wallpapers = ../../assets/wallpapers;
+  };
   waybar.enable = true;
   firefox.enable = true;
   rofi.enable = true;
